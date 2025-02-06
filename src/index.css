@@ -4,9 +4,15 @@
 .bgimg{
   background-image: url("https://www.mathematica.org/-/media/internet/health-graphics-and-photos/health-graphics/2020/medical_health_interactive_web.jpg");
 }
-.parts :hover{
+.parts{
   background-color:rgb(227, 238, 247);
 }
 .about{
   background-image: url("https://www.mathematica.org/-/media/internet/health-graphics-and-photos/health-graphics/2020/medical_health_interactive_web.jpg");
+}
+.main{
+  
+  /* background-image: url("https://st3.depositphotos.com/32032774/33790/v/450/depositphotos_337909880-stock-illustration-simple-blue-white-medical-background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover; */
 }

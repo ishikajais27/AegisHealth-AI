@@ -1,7 +1,7 @@
 function Front() {
     return (
         <>
-            <div className="font-serif main_container">
+            <div className=" main font-serif main_container">
                 
 
                 {/* Hero Section */}
@@ -21,16 +21,16 @@ function Front() {
                 <section className="py-16 px-4"> {/* Added px-4 for spacing on both sides */}
                     <div className="container mx-auto px-6">
                         <h2 className="text-3xl font-bold text-center mb-12">Why Choose RiskPredict?</h2>
-                        <div className="parts grid grid-cols-1 md:grid-cols-3 gap-8">
-                            <div className="bg-white p-6 rounded-lg shadow-md text-center">
+                        <div className=" grid grid-cols-1 md:grid-cols-3 gap-8">
+                            <div className="parts p-6 rounded-lg shadow-md text-center">
                                 <h3 className="text-xl font-semibold mb-4">Personalized Insights</h3>
                                 <p className="text-gray-600">Our tool analyzes your health data to provide tailored risk predictions.</p>
                             </div>
-                            <div className="bg-white p-6 rounded-lg shadow-md text-center">
+                            <div className="parts p-6 rounded-lg shadow-md text-center">
                                 <h3 className="text-xl font-semibold mb-4">Advanced Algorithms</h3>
                                 <p className="text-gray-600">Powered by cutting-edge AI to ensure accurate and reliable results.</p>
                             </div>
-                            <div className="bg-white p-6 rounded-lg shadow-md text-center">
+                            <div className="parts p-6 rounded-lg shadow-md text-center">
                                 <h3 className="text-xl font-semibold mb-4">Actionable Recommendations</h3>
                                 <p className="text-gray-600">Receive practical advice to reduce your health risks and improve your well-being.</p>
                             </div>
