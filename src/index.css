@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.bgimg{
+  background-image: url("https://www.mathematica.org/-/media/internet/health-graphics-and-photos/health-graphics/2020/medical_health_interactive_web.jpg");
+}
+.parts :hover{
+  background-color:rgb(227, 238, 247);
+}
+.about{
+  background-image: url("https://www.mathematica.org/-/media/internet/health-graphics-and-photos/health-graphics/2020/medical_health_interactive_web.jpg");
+}
