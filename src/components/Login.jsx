@@ -3,14 +3,18 @@ import React from 'react';
 function Login() {
   return (
     <>
-      <div className="login w-[100vw] h-[86vh] relative overflow-hidden">
+      <div className="login w-[100vw] text-white h-[86vh] relative overflow-hidden">
         {/* Background Image */}
         <img
           className="w-full h-full object-cover absolute top-0 left-0"
-          src="https://i.pinimg.com/736x/a0/b4/c9/a0b4c9d2e2641771bbf4b1c296fee163.jpg"
+          src="https://www.shutterstock.com/image-vector/health-care-medical-science-icon-260nw-2430758897.jpg"
           alt="Background"
         />
-
+        <div className='relative right-0 left-2/4 font-bold top-1/4'>
+        <h1 className='text-8xl'>AegisHealth</h1>
+        <br />
+        <div className="details w-[40vw] text-xl">RiskPredict leverages AI to assess health risks, empowering you to take control of your well-being. Stay informed, stay safe, and make proactive decisions for a healthier life.</div>
+        </div>
         {/* Login Form */}
         <div className="absolute top-1/2 left-8 transform -translate-y-1/2 bg-white bg-opacity-90 p-8 rounded-lg shadow-lg w-96">
           <h2 className="text-2xl font-bold text-center mb-6 text-gray-800">Login</h2>
