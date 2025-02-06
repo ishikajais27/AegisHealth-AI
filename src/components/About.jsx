@@ -30,7 +30,7 @@ function About() {
                     <div className="w-[85vw] mx-auto px-6">
                         <h2 className="text-3xl font-bold text-center mb-12">Meet Our Team</h2>
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                            <div className="bg-white p-6 rounded-lg shadow-md text-center">
+                            <div className="bg-white bg-blue-100 p-6 rounded-lg shadow-md text-center">
                                 <img src="https://via.placeholder.com/150" alt="Team Member" className="w-24 h-24 rounded-full mx-auto mb-4" />
                                 <h3 className="text-xl font-semibold mb-2">Ishika Jaiswal</h3>
                                 <p className="text-gray-600">Chief Medical Officer</p>
@@ -38,7 +38,7 @@ function About() {
                                     With over 15 years of experience in healthcare, Dr. Jane ensures our predictions are accurate and reliable.
                                 </p>
                             </div>
-                            <div className="bg-white p-6 rounded-lg shadow-md text-center">
+                            <div className="bg-white bg-blue-100 p-6 rounded-lg shadow-md text-center">
                                 <img src="https://via.placeholder.com/150" alt="Team Member" className="w-24 h-24 rounded-full mx-auto mb-4" />
                                 <h3 className="text-xl font-semibold mb-2">Ishayan Kundu</h3>
                                 <p className="text-gray-600">Chief Medical Officer</p>
@@ -46,7 +46,7 @@ function About() {
                                     With over 15 years of experience in healthcare, Dr. Jane ensures our predictions are accurate and reliable.
                                 </p>
                             </div>
-                            <div className="bg-white p-6 rounded-lg shadow-md text-center">
+                            <div className="bg-white bg-blue-100 p-6 rounded-lg shadow-md text-center">
                                 <img src="https://via.placeholder.com/150" alt="Team Member" className="w-24 h-24 rounded-full mx-auto mb-4" />
                                 <h3 className="text-xl font-semibold mb-2">Nishtha Mishra</h3>
                                 <p className="text-gray-600">Lead Data Scientist</p>
@@ -54,7 +54,7 @@ function About() {
                                     John specializes in AI and machine learning, driving the technology behind our risk prediction models.
                                 </p>
                             </div>
-                            <div className="bg-white p-6 rounded-lg shadow-md text-center">
+                            <div className="bg-white bg-blue-100 p-6 rounded-lg shadow-md text-center">
                                 <img src="https://via.placeholder.com/150" alt="Team Member" className="w-24 h-24 rounded-full mx-auto mb-4" />
                                 <h3 className="text-xl font-semibold mb-2">Ishita Dwivedi</h3>
                                 <p className="text-gray-600">Product Manager</p>
