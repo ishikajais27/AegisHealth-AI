@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Front from './components/Front.jsx' // Import your Home component
 import About from './components/About.jsx' // Import your About component
 import Login from './components/Login.jsx' // Import your About component
+import HealthForm from './components/HealthForm.jsx'
 
 // Define the router configuration
 const router = createBrowserRouter([
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: 'login',
         element: <Login />,
+      },
+      {
+        path: '/health-form',
+        element: <HealthForm />,
       },
     ],
   },
