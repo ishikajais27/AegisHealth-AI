@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.bgimg{
+  background-image: url("https://www.mathematica.org/-/media/internet/health-graphics-and-photos/health-graphics/2020/medical_health_interactive_web.jpg");
+}
+.parts :hover{
+  background-color:rgb(227, 238, 247);
+}
+.about{
+  background-image: url("https://www.mathematica.org/-/media/internet/health-graphics-and-photos/health-graphics/2020/medical_health_interactive_web.jpg");
+}
+.custom-shape-divider-bottom-1738941601 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.custom-shape-divider-bottom-1738941601 svg {
+  position: relative;
+  display: block;
+  width: calc(142% + 1.3px);
+  height: 464px;
+}
+
+.custom-shape-divider-bottom-1738941601 .shape-fill {
+  fill: #FFFFFF;
+}
+.login{
+  background-image: url("https://img.lovepik.com/background/20211022/large/lovepik-medical-material-background-image_500692547.jpg");
+}
