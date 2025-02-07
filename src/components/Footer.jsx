@@ -18,8 +18,8 @@ import React from 'react'
 
 function Footer() {
   return (
-    <footer className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-6">
-      <div className="container mx-auto px-3 text-center">
+    <footer className="bg-gradient-to-r from-blue-400 to-purple-300 bg-opacity-80 backdrop-blur-md shadow-md fixed w-full z-50  py-4" >
+      <div className="container mx-auto px-3 text-center text-black ">
         <p>&copy; 2025 HealthyBlue. All rights reserved.</p>
       </div>
     </footer>

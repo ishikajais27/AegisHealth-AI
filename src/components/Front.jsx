@@ -101,7 +101,7 @@ function Front() {
   return (
     <div className="font-serif main_container">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-20 relative overflow-hidden">
+      <section className="bg-gradient-to-r h-[60vh] from-blue-600 to-purple-600 text-white pt-44 relative overflow-hidden">
         {/* Background Image */}
         <motion.img
           src="https://images.pexels.com/photos/4145190/pexels-photo-4145190.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"

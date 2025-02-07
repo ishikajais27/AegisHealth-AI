@@ -288,13 +288,14 @@ function About() {
 
   return (
     <>
+    
       {/* Hero Section */}
-      <section className="about h-[40vh] text-white py-20 relative overflow-hidden">
+      <section className="about h-[60vh] text-white py-20 relative overflow-hidden">
         {/* Background Image */}
         <motion.img
           src="https://images.pexels.com/photos/4145190/pexels-photo-4145190.jpeg"
           alt="Healthcare Background"
-          className="absolute inset-0 w-full h-full object-cover opacity-70"
+          className="absolute inset-0 mt-12 w-full h-full object-cover opacity-70"
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.7 }}
           transition={{ duration: 1.5 }}
@@ -303,12 +304,12 @@ function About() {
         {/* Overlay */}
         <div className="absolute inset-0 bg-gradient-to-r from-blue-700 to-purple-700 opacity-50"></div>
 
-        <div className="w-[85vw] mx-auto px-6 text-center relative z-10">
+        <div className="w-[85vw]  mx-auto px-6 text-center relative z-10">
           <motion.h1
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: 'easeOut' }}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4"
+            className="text-4xl md:text-5xl lg:text-6xl font-bold mt-10 mb-4"
           >
             About RiskPredict
           </motion.h1>
@@ -325,8 +326,8 @@ function About() {
       </section>
 
       {/* Mission Section */}
-      <section className="py-16 px-4 bg-gradient-to-r from-blue-50 to-purple-50">
-        <div className="w-[85vw] mx-auto px-6">
+      <section className="py-16  px-4 bg-gradient-to-r from-blue-50 to-purple-50">
+        <div className="w-[85vw] shadow-xl py-6 mx-auto px-6">
           <h2 className="text-3xl font-semibold text-center text-gray-800 mb-8">
             Our Mission
           </h2>
@@ -354,11 +355,7 @@ function About() {
                 whileHover={{ scale: 1.05 }}
                 className="bg-white p-6 rounded-lg shadow-md text-center hover:shadow-xl transition-shadow duration-300"
               >
-                <img
-                  src={`https://source.unsplash.com/150x150/?portrait&sig=${index}`} // Dynamic profile images
-                  alt={member.name}
-                  className="w-24 h-24 rounded-full mx-auto mb-4 object-cover"
-                />
+
                 <h3 className="text-xl font-semibold text-gray-800 mb-2">
                   {member.name}
                 </h3>

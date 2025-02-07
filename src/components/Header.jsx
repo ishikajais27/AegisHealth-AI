@@ -146,14 +146,14 @@ function Header(props) {
   return (
     <>
       {/* Navbar */}
-      <nav className="bg-gradient-to-r from-blue-200 to-purple-100 bg-opacity-80 backdrop-blur-md shadow-md fixed w-full z-50">
-        <div className="container mx-auto px-6 py-3 flex justify-between items-center">
+      <nav className="bg-gradient-to-r from-blue-400 to-purple-300 bg-opacity-80 backdrop-blur-md shadow-md fixed w-full z-50">
+        <div className="container mx-auto px-4 py-3 flex justify-between items-center">
           {/* Logo with Link */}
           <Link
             to="/"
             className="text-2xl font-bold text-blue-600 hover:text-blue-700 transition-all duration-200"
           >
-            <h1>{props.title}</h1>
+            <h1 className='text-blue-900'>{props.title}</h1>
           </Link>
 
           {/* Navigation Links (Desktop) */}
