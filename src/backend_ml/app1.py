@@ -7,17 +7,17 @@ import streamlit as st
 
 # Debug: Print current working directory and file paths
 print("Current working directory:", os.getcwd())
-print("Model file path:", os.path.abspath('diabetes_model(1).pkl'))
+print("Model file path:", os.path.abspath('diabetes_model.pkl'))
 print("Dataset file path:", os.path.abspath('diabetes.xlsx'))
 print("HTML file path:", os.path.abspath('diabetes.html'))
 
 # Load the model
 try:
-    model_path = os.path.join(os.path.dirname(__file__), 'diabetes_model(1).pkl')
+    model_path = os.path.join(os.path.dirname(__file__), 'diabetes_model.pkl')
     with open(model_path, 'rb') as file:
         model = pickle.load(file)
 except FileNotFoundError:
-    st.error(f"Error: 'diabetes_model(1).pkl' file not found at: {model_path}")
+    st.error(f"Error: 'diabetes_model.pkl' file not found at: {model_path}")
     st.stop()
 
 # Function to predict diabetes
