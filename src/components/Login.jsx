@@ -1,11 +1,6 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
-import { auth, db } from './firebase'
-import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-} from 'firebase/auth'
-import { doc, setDoc } from 'firebase/firestore'
+import supabase from '../supbaseClient'
 import { useNavigate } from 'react-router-dom' // Import useNavigate
 
 function Login() {
@@ -20,35 +15,61 @@ function Login() {
     setError('')
 
     try {
+      // Inside handleAuth function
       if (isLogin) {
         // Login
-        const userCredential = await signInWithEmailAndPassword(
-          auth,
-          email,
-          password
-        )
-        const user = userCredential.user
-        console.log('User logged in:', user)
-        navigate('/health-form') // Redirect to HealthForm after login
-      } else {
-        // Signup
-        const userCredential = await createUserWithEmailAndPassword(
-          auth,
-          email,
-          password
-        )
-        const user = userCredential.user
-
-        // Store additional user data in Firestore
-        await setDoc(doc(db, 'users', user.uid), {
-          email: user.email,
-          createdAt: new Date(),
-          // Add any other user data you want to store
+        const { data, error } = await supabase.auth.signInWithPassword({
+          email: email,
+          password: password,
         })
 
-        console.log('User signed up and data stored:', user)
-        navigate('/health-form') // Redirect to HealthForm after signup
+        if (error) {
+          setError(error.message)
+        } else {
+          console.log('User logged in:', data.user)
+          navigate('/health-form') // Redirect to HealthForm after login
+        }
+      } else {
+        // Signup
+        const { data, error } = await supabase.auth.signUp({
+          email: email,
+          password: password,
+        })
+
+        if (error) {
+          setError(error.message)
+        } else {
+          console.log('User signed up:', data.user)
+          navigate('/health-form') // Redirect to HealthForm after signup
+        }
       }
+      // if (isLogin) {
+      //   // Login
+      //   const { data, error } = await supabase.auth.signInWithPassword({
+      //     email: email,
+      //     password: password,
+      //   })
+
+      //   if (error) {
+      //     setError(error.message)
+      //   } else {
+      //     console.log('User logged in:', data.user)
+      //     navigate('/health-form') // Redirect to HealthForm after login
+      //   }
+      // } else {
+      //   // Signup
+      //   const { data, error } = await supabase.auth.signUp({
+      //     email: email,
+      //     password: password,
+      //   })
+
+      //   if (error) {
+      //     setError(error.message)
+      //   } else {
+      //     console.log('User signed up:', data.user)
+      //     navigate('/chatbot') // Redirect to Chatbot after signup
+      //   }
+      // }
     } catch (error) {
       setError(error.message)
       console.error('Error:', error)
@@ -71,16 +92,18 @@ function Login() {
 
           {/* Text Overlay - AegisHealth */}
           <motion.h1
-            className="absolute top-1/3 right-2/3  font-bold shodow-md transform -translate-x-1/2 -translate-y-1/2 text-7xl font-bold text-black text-center opacity-80"
+            className="absolute top-1/3 right-2/3 font-bold shadow-md transform -translate-x-1/2 -translate-y-1/2 text-7xl font-bold text-black text-center opacity-80"
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 0.8, y: 0 }}
             transition={{ duration: 1, delay: 0.5, ease: 'easeOut' }}
           >
             AegisHealth
-            <h3 className="text-3xl my-4">your healthcare is our priority</h3>
-            <h3 className="text-3xl my-1 mx-5">
-              Please Signin/Signup to predict your Health!!!
-            </h3>
+            <div>
+              <h3 className="text-3xl my-4">your healthcare is our priority</h3>
+              <h3 className="text-3xl my-1 mx-5">
+                Please Signin/Signup to predict your Health!!!
+              </h3>
+            </div>
           </motion.h1>
 
           {/* Wavy Structure Image */}

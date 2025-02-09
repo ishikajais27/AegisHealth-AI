@@ -153,7 +153,7 @@ function Header(props) {
             to="/"
             className="text-2xl font-bold text-blue-600 hover:text-blue-700 transition-all duration-200"
           >
-            <h1 className='text-blue-900'>{props.title}</h1>
+            <h1 className="text-blue-900">{props.title}</h1>
           </Link>
 
           {/* Navigation Links (Desktop) */}
@@ -177,6 +177,16 @@ function Header(props) {
               }
             >
               About Us
+            </NavLink>
+            <NavLink
+              to="/contact-us" // Added ContactUs link
+              className={({ isActive }) =>
+                isActive
+                  ? 'text-blue-600 font-semibold hover:text-blue-700 transition-all duration-200'
+                  : 'text-gray-700 hover:text-blue-600 transition-all duration-200'
+              }
+            >
+              Contact Us
             </NavLink>
             <motion.div
               whileHover={{ scale: 1.05 }}
@@ -243,6 +253,17 @@ function Header(props) {
                 onClick={toggleMobileMenu}
               >
                 About Us
+              </NavLink>
+              <NavLink
+                to="/contact-us" // Added ContactUs link
+                className={({ isActive }) =>
+                  isActive
+                    ? 'text-blue-600 font-semibold hover:text-blue-700 transition-all duration-200'
+                    : 'text-gray-700 hover:text-blue-600 transition-all duration-200'
+                }
+                onClick={toggleMobileMenu}
+              >
+                Contact Us
               </NavLink>
               <motion.div
                 whileHover={{ scale: 1.05 }}

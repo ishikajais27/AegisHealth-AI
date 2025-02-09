@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Heart Disease Predictor</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      .form-container {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 300px;
+      }
+      .form-container h2 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      .form-container label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
+      .form-container input[type='number'],
+      .form-container select {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+      .form-container button {
+        width: 100%;
+        padding: 10px;
+        background-color: #28a745;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      .form-container button:hover {
+        background-color: #218838;
+      }
+      .result {
+        margin-top: 20px;
+        text-align: center;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="form-container">
+      <h2>Heart Disease Predictor</h2>
+      <form id="heart-disease-form">
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" required />
+
+        <label for="sex">Sex (1 = Male, 0 = Female):</label>
+        <select id="sex" name="sex" required>
+          <option value="1">Male</option>
+          <option value="0">Female</option>
+        </select>
+
+        <label for="cp">Chest Pain Type (0-3):</label>
+        <input type="number" id="cp" name="cp" min="0" max="3" required />
+
+        <label for="trtbps">Resting Blood Pressure (mm Hg):</label>
+        <input type="number" id="trtbps" name="trtbps" required />
+
+        <label for="chol">Cholesterol (mg/dl):</label>
+        <input type="number" id="chol" name="chol" required />
+
+        <label for="fbs"
+          >Fasting Blood Sugar > 120 mg/dl (1 = True, 0 = False):</label
+        >
+        <select id="fbs" name="fbs" required>
+          <option value="1">True</option>
+          <option value="0">False</option>
+        </select>
+
+        <label for="restecg">Resting ECG Results (0-2):</label>
+        <input
+          type="number"
+          id="restecg"
+          name="restecg"
+          min="0"
+          max="2"
+          required
+        />
+
+        <label for="thalachh">Maximum Heart Rate Achieved:</label>
+        <input type="number" id="thalachh" name="thalachh" required />
+
+        <label for="exng">Exercise Induced Angina (1 = Yes, 0 = No):</label>
+        <select id="exng" name="exng" required>
+          <option value="1">Yes</option>
+          <option value="0">No</option>
+        </select>
+
+        <label for="oldpeak">ST Depression Induced by Exercise:</label>
+        <input type="number" id="oldpeak" name="oldpeak" step="0.1" required />
+
+        <label for="slp">Slope of the Peak Exercise ST Segment (0-2):</label>
+        <input type="number" id="slp" name="slp" min="0" max="2" required />
+
+        <label for="caa">Number of Major Vessels (0-3):</label>
+        <input type="number" id="caa" name="caa" min="0" max="3" required />
+
+        <label for="thall">Thalassemia (0-3):</label>
+        <input type="number" id="thall" name="thall" min="0" max="3" required />
+
+        <button type="submit">Predict</button>
+      </form>
+      <div class="result" id="result"></div>
+    </div>
+
+    <script>
+      document.getElementById('heart-disease-form').addEventListener('submit', function (e) {
+          e.preventDefault();
+
+          // Collect form data
+          const formData = {
+              age: document.getElementById('age').value,
+              sex: document.getElementById('sex').value,
+              cp: document.getElementById('cp').value,
+              trtbps: document.getElementById('trtbps').value,
+              chol: document.getElementById('chol').value,
+              fbs: document.getElementById('fbs').value,
+              restecg: document.getElementById('restecg').value,
+              thalachh: document.getElementById('thalachh').value,
+              exng: document.getElementById('exng').value,
+              oldpeak: document.getElementById('oldpeak').value,
+              slp: document.getElementById('slp').value,
+              caa: document.getElementById('caa').value,
+              thall: document.getElementById('thall').value
+          };
+
+          // Send data to the backend for prediction
+          fetch('/predict', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(formData)
+          })
+          .then(response => response.json())
+          .then(data => {
+              // Display the result
+              document.getElementById('result').innerText = Prediction: ${data.prediction};
+          })
+          .catch(error => {
+              console.error('Error:', error);
+          });
+      });
+    </script>
+  </body>
+</html>
