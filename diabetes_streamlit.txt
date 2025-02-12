@@ -1,0 +1,89 @@
+import streamlit as st
+import pandas as pd
+import numpy as np
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.preprocessing import StandardScaler
+
+@st.cache_data
+def load_data():
+    df = pd.read_excel('diabetes.xlsx')
+    return df
+
+@st.cache_data
+def train_model(df):
+    X = df.drop('Outcome', axis=1)
+    y = df['Outcome']
+    
+    
+    scaler = StandardScaler()
+    X_scaled = scaler.fit_transform(X)
+    
+    
+    model = RandomForestClassifier(random_state=42)
+    model.fit(X_scaled, y)
+    
+    return model, scaler
+
+
+def main():
+    st.title("Diabetes Prediction App")
+    st.write("This app predicts whether a person has diabetes based on their health metrics.")
+    
+    
+    df = load_data()
+    
+    
+    model, scaler = train_model(df)
+    
+    
+    st.sidebar.header("Input Features")
+    
+    pregnancies = st.sidebar.slider("Pregnancies", 0, 17, 1)
+    glucose = st.sidebar.slider("Glucose", 0, 200, 100)
+    blood_pressure = st.sidebar.slider("Blood Pressure", 0, 122, 70)
+    skin_thickness = st.sidebar.slider("Skin Thickness", 0, 99, 20)
+    insulin = st.sidebar.slider("Insulin", 0, 846, 79)
+    bmi = st.sidebar.slider("BMI", 0.0, 67.1, 25.0)
+    diabetes_pedigree = st.sidebar.slider("Diabetes Pedigree Function", 0.0, 2.42, 0.5)
+    age = st.sidebar.slider("Age", 21, 81, 30)
+    
+    
+    input_data = {
+        'Pregnancies': pregnancies,
+        'Glucose': glucose,
+        'BloodPressure': blood_pressure,
+        'SkinThickness': skin_thickness,
+        'Insulin': insulin,
+        'BMI': bmi,
+        'DiabetesPedigreeFunction': diabetes_pedigree,
+        'Age': age
+    }
+    
+    
+    input_df = pd.DataFrame([input_data])
+    
+    
+    st.subheader("Input Data")
+    st.write(input_df)
+    
+    
+    input_scaled = scaler.transform(input_df)
+    
+    
+    prediction = model.predict(input_scaled)
+    prediction_proba = model.predict_proba(input_scaled)
+    
+    
+    st.subheader("Prediction")
+    if prediction[0] == 1:
+        st.write("The model predicts that the person **has diabetes**.")
+    else:
+        st.write("The model predicts that the person **does not have diabetes**.")
+    
+    
+    st.subheader("Prediction Probability")
+    st.write(f"Probability of having diabetes: {prediction_proba[0][1]:.2f}")
+    st.write(f"Probability of not having diabetes: {prediction_proba[0][0]:.2f}")
+
+if __name__ == "__main__":
+    main()
