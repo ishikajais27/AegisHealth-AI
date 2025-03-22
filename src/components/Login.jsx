@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
-import supabase from '../supbaseClient'
-import { useNavigate } from 'react-router-dom' // Import useNavigate
+import axios from 'axios' // Import Axios for HTTP requests
+import { useNavigate } from 'react-router-dom' // Import useNavigate for navigation
 
 function Login() {
   const [email, setEmail] = useState('')
@@ -15,63 +15,22 @@ function Login() {
     setError('')
 
     try {
-      // Inside handleAuth function
+      const endpoint = isLogin ? '/api/login' : '/api/register' // Determine the API endpoint
+      const response = await axios.post(`http://localhost:5000${endpoint}`, {
+        email,
+        password,
+      })
+
       if (isLogin) {
-        // Login
-        const { data, error } = await supabase.auth.signInWithPassword({
-          email: email,
-          password: password,
-        })
-
-        if (error) {
-          setError(error.message)
-        } else {
-          console.log('User logged in:', data.user)
-          navigate('/health-form') // Redirect to HealthForm after login
-        }
+        const { token } = response.data
+        localStorage.setItem('token', token) // Save token to localStorage
+        navigate('/health-form') // Redirect to HealthForm after login
       } else {
-        // Signup
-        const { data, error } = await supabase.auth.signUp({
-          email: email,
-          password: password,
-        })
-
-        if (error) {
-          setError(error.message)
-        } else {
-          console.log('User signed up:', data.user)
-          navigate('/health-form') // Redirect to HealthForm after signup
-        }
+        console.log('User signed up:', response.data)
+        navigate('/health-form') // Redirect to HealthForm after signup
       }
-      // if (isLogin) {
-      //   // Login
-      //   const { data, error } = await supabase.auth.signInWithPassword({
-      //     email: email,
-      //     password: password,
-      //   })
-
-      //   if (error) {
-      //     setError(error.message)
-      //   } else {
-      //     console.log('User logged in:', data.user)
-      //     navigate('/health-form') // Redirect to HealthForm after login
-      //   }
-      // } else {
-      //   // Signup
-      //   const { data, error } = await supabase.auth.signUp({
-      //     email: email,
-      //     password: password,
-      //   })
-
-      //   if (error) {
-      //     setError(error.message)
-      //   } else {
-      //     console.log('User signed up:', data.user)
-      //     navigate('/chatbot') // Redirect to Chatbot after signup
-      //   }
-      // }
     } catch (error) {
-      setError(error.message)
+      setError(error.response?.data?.error || 'An error occurred') // Display error message
       console.error('Error:', error)
     }
   }
@@ -92,18 +51,21 @@ function Login() {
 
           {/* Text Overlay - AegisHealth */}
           <motion.h1
-            className="absolute top-1/3 right-2/3 font-bold shadow-md transform -translate-x-1/2 -translate-y-1/2 text-7xl font-bold text-black text-center opacity-80"
+            className="absolute top-1/3 left-[10%] font-extrabold transform -translate-x-1/2 -translate-y-1/2 text-8xl text-gray-900 text-left drop-shadow-2xl"
             initial={{ opacity: 0, y: -50 }}
-            animate={{ opacity: 0.8, y: 0 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.5, ease: 'easeOut' }}
+            style={{ background: 'none', boxShadow: 'none' }} // Ensures no background or box effect
           >
             AegisHealth
-            <div>
-              <h3 className="text-3xl my-4">your healthcare is our priority</h3>
-              <h3 className="text-3xl my-1 mx-5">
-                Please Signin/Signup to predict your Health!!!
-              </h3>
-            </div>
+            <h3 className="text-3xl mt-6 text-gray-800 tracking-wide">
+              <span className="font-semibold">Your healthcare</span> is our
+              priority
+            </h3>
+            <h3 className="text-2xl mt-4 text-gray-700 font-medium">
+              Sign in or Sign up to{' '}
+              <span className="font-semibold">predict your health!</span>
+            </h3>
           </motion.h1>
 
           {/* Wavy Structure Image */}

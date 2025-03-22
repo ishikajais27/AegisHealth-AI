@@ -3,6 +3,7 @@ import pickle
 
 import numpy as np
 import pandas as pd
+import requests
 import streamlit as st
 
 # Debug: Print current working directory and file paths
@@ -45,6 +46,7 @@ def main():
     if st.button("Predict"):
         features = [pregnancies, glucose, blood_pressure, skin_thickness, insulin, bmi, diabetes_pedigree_function, age]
         prediction = predict_diabetes(features)
+        
         if prediction[0] == 1:
             st.error("The model predicts that the person has diabetes.")
         else:
